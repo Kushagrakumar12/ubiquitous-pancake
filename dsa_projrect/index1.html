@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple Music Player</title>
+  <!-- Load FontAwesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+  <!-- Load the custom CSS style file -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="player" id="player">
+
+    <!-- Define the section for displaying details -->
+    <div class="details">
+      <div class="now-playing">PLAYING </div>
+      <div class="track-art"></div>
+      <p id="current-song" class="track-name">Current Song: None</p>
+      <audio id="audio" style="width: 100%"></audio>
+    </div>
+
+    <!-- Define the section for displaying track buttons -->
+    <div class="buttons">
+      <div class="prev-track">
+        <button onclick="prevSong()">
+          <i class="fa fa-step-backward fa-2x"></i>
+        </button>
+      </div>
+      <div class="playpause-track">
+        <button onclick="togglePlayPause()">
+          <i class="fa fa-play-circle fa-5x"></i>
+        </button>
+      </div>
+      <div class="next-track">
+        <button onclick="nextSong()">
+          <i class="fa fa-step-forward fa-2x"></i>
+        </button>
+      </div>
+    </div>
+    
+    <button onclick="addToPlaylist()">Add to Playlist</button>
+    <button onclick="showPlaylist()">Show Playlist</button>
+    <button onclick="playPlaylist()">Play Playlist</button>
+    <button onclick="hidePlaylist()">Hide Playlist</button>
+
+    <!-- Define the section for displaying the seek slider -->
+    <div class="slider_container">
+      <div class="current-time">00:00</div>
+      <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+      <div class="total-duration">00:00</div>
+    </div>
+
+    <!-- Define the section for displaying the volume slider -->
+    <div class="slider_container">
+      <i class="fa fa-volume-down"></i>
+      <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+      <i class="fa fa-volume-up"></i>
+    </div>
+
+    <!-- Define the section for the search input and button -->
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search for a song">
+      <button onclick="searchSong()">Search</button>
+    </div>
+
+    <!-- Display the "Song not found" message -->
+    <div id="not-found-message" style="display: none; color: red; margin-top: 10px;">
+      Song not found
+    </div>
+
+    <div id="playlist-container" style="display: none;">
+      <input type="text" id="playlist-name-input" placeholder="Enter Playlist Name">
+      <button onclick="setPlaylistName()">Set Playlist Name</button>
+      <p id="playlist-name" style="display: none;"></p>
+      <ul id="playlist">
+        <!-- Playlist will be displayed here -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Load the main script for the player -->
+  <script src="main1.js"></script>
+</body>
+</html>
